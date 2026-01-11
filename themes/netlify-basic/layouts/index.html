@@ -1,35 +1,68 @@
 {{ define "main" }}
-<div id="content">
-    <div class="header">
-        <h1>David García - Currículum Vitae</h1>
-    </div>
+<div style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; max-width: 800px; margin: auto; padding: 20px; color: #333; line-height: 1.6;">
+    
+    <header style="text-align: center; border-bottom: 2px solid #004494; padding-bottom: 20px;">
+        <h1 style="margin: 0; color: #004494;">DAVID GARCÍA</h1>
+        <p style="font-size: 1.2em; margin: 5px 0;">Ingeniero Cloud / Especialista en AWS</p>
+        <p>📍 Barcelona, España | ✉️ email@tu-correo.com</p>
+    </header>
 
-    <div class="cv-section">
-        <h2>Experiencia Profesional</h2>
-        <p>Tu experiencia aquí...</p>
-        
-        <h2>Educación</h2>
-        <p>Tus estudios aquí...</p>
-    </div>
+    <section style="margin-top: 30px;">
+        <h2 style="color: #004494; border-bottom: 1px solid #ccc;">Sobre Mí</h2>
+        <p>Profesional apasionado por la tecnología Cloud y la automatización. Con experiencia en despliegue de infraestructuras serverless en AWS y gestión de arquitecturas modernas.</p>
+    </section>
 
-    <hr>
+    <section style="margin-top: 30px;">
+        <h2 style="color: #004494; border-bottom: 1px solid #ccc;">Experiencia Profesional</h2>
+        <div style="margin-bottom: 20px;">
+            <h3 style="margin: 0;">Junior Cloud Engineer - Empresa ABC</h3>
+            <span style="font-style: italic; color: #666;">Enero 2024 - Presente</span>
+            <ul style="margin-top: 5px;">
+                <li>Despliegue de funciones Lambda y APIs con API Gateway.</li>
+                <li>Gestión de bases de datos NoSQL con DynamoDB.</li>
+                <li>Automatización de CI/CD para aplicaciones web.</li>
+            </ul>
+        </div>
+    </section>
 
-    <div style="text-align: center; margin-top: 50px; background-color: #f0f0f0; padding: 20px;">
-        <p>Este currículum ha sido visitado <span id="vistas" style="font-weight: bold; color: #ff9900;">...</span> veces.</p>
-    </div>
+    <section style="margin-top: 30px;">
+        <h2 style="color: #004494; border-bottom: 1px solid #ccc;">Habilidades Técnicas</h2>
+        <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px;">
+            <span style="background: #004494; color: white; padding: 5px 12px; border-radius: 15px; font-size: 0.9em;">AWS (Lambda, S3, DynamoDB)</span>
+            <span style="background: #004494; color: white; padding: 5px 12px; border-radius: 15px; font-size: 0.9em;">Python</span>
+            <span style="background: #004494; color: white; padding: 5px 12px; border-radius: 15px; font-size: 0.9em;">Terraform</span>
+            <span style="background: #004494; color: white; padding: 5px 12px; border-radius: 15px; font-size: 0.9em;">HTML/CSS/JS</span>
+        </div>
+    </section>
+
+    <footer style="margin-top: 50px; padding: 20px; background-color: #f4f4f4; border-radius: 10px; text-align: center; border: 1px dashed #004494;">
+        <h3 style="margin: 0; color: #004494;">Estadísticas del Sitio</h3>
+        <p style="font-size: 1.1em; margin: 10px 0;">
+            Este currículum ha sido visualizado <span id="vistas" style="font-weight: bold; font-size: 1.3em; color: #ff9900;">...</span> veces.
+        </p>
+        <small style="color: #888;">Powered by AWS Lambda & DynamoDB</small>
+    </footer>
 
     <script>
       const urlApi = 'https://j9dtfuvsaa.execute-api.us-east-1.amazonaws.com/visitorCounter';
+
       async function actualizarContador() {
         try {
           const respuesta = await fetch(urlApi);
           const datos = await respuesta.json();
+          // Actualizamos el número en la web
           document.getElementById('vistas').innerText = datos.count;
         } catch (error) {
-          console.error("Error:", error);
+          console.error("Error al cargar el contador:", error);
           document.getElementById('vistas').innerText = "error";
         }
       }
+
+      // Ejecutar al cargar la página
+      actualizarContador();
+    </script>
+</div>
+{{ end }}
       actualizarContador();
     </script>
 </div>
