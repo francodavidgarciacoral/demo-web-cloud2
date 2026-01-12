@@ -1,1 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>David García - CV</title>
+</head>
+<body style="font-family: sans-serif; max-width: 800px; margin: auto; padding: 20px;">
+    <h1>DAVID GARCÍA</h1>
+    <p>Administrador de sistemas en red / Especialista en Cloud AWS</p>
+    <hr>
+    <h2>Experiencia Profesional</h2>
+    <ul>
+        <li>Despliegue de funciones Lambda y APIs con API Gateway.</li>
+        <li>Gestión de bases de datos NoSQL con DynamoDB.</li>
+    </ul>
+    
+    <div style="margin-top: 50px; background: #f4f4f4; padding: 20px; text-align: center;">
+        <p>Visitas: <span id="vistas" style="font-weight: bold; color: orange;">...</span></p>
+    </div>
 
+    <script>
+      const urlApi = 'https://j9dtfuvsaa.execute-api.us-east-1.amazonaws.com/visitorCounter';
+      fetch(urlApi).then(r => r.json()).then(d => {
+        document.getElementById('vistas').innerText = d.count;
+      });
+    </script>
+</body>
+</html>
